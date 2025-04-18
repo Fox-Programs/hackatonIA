@@ -41,7 +41,12 @@ function displayQuestion(index) {
   const answersElem = document.getElementById("answers");
   const waitMsg = document.getElementById("wait-message");
 
-  // Vérification si l'élément "wait-message" existe avant de manipuler son style
+  // Vérification de l'existence des éléments avant de manipuler leur style
+  if (!questionElem || !answersElem) {
+      console.error("Éléments manquants dans le DOM");
+      return;
+  }
+
   if (waitMsg) {
       waitMsg.style.display = "none";  // Cache le message d'attente
   }
@@ -65,6 +70,7 @@ function displayQuestion(index) {
       answersElem.appendChild(li);
   });
 }
+
 
 
 // Fonction pour gérer la réponse de l'utilisateur
@@ -108,3 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
         listenToChanges(displayQuestion);
     }
 });
+
+window.onload = () => {
+  const started = localStorage.getItem("quiz_started") === "true";
+  if (started) {
+      const index = parseInt(localStorage.getItem("quiz_index") || "0");
+      listenToChanges(displayQuestion);
+  }
+};
