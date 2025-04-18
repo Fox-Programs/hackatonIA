@@ -17,6 +17,9 @@
 
         <button onclick="startQuiz()">Démarrer le Quiz</button>
         <p>Question en cours : <span id="current-question">Aucune</span></p>
+
+        <!-- Score moyen -->
+        <h2>Score moyen des participants : <span id="average-score">0</span></h2>
     </main>
 
     <!-- Fichiers JS nécessaires -->
@@ -44,6 +47,19 @@
                 currentQ.textContent = `${index + 1} / ${quiz.length}`;
             }
         });
+
+        // Calcul du score moyen
+        function updateAverageScore() {
+            const scores = JSON.parse(localStorage.getItem("scores") || "[]");
+            if (scores.length > 0) {
+                const sum = scores.reduce((acc, score) => acc + score, 0);
+                const average = sum / scores.length;
+                document.getElementById('average-score').textContent = average.toFixed(2);
+            }
+        }
+
+        // Appeler la fonction pour mettre à jour le score moyen
+        setInterval(updateAverageScore, 1000);
     </script>
 </body>
 
