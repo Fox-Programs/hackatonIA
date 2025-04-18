@@ -25,7 +25,7 @@ nav {
 }
 
 nav a {
-  margin: 0 10px;
+  margin: 0 15px;
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -42,7 +42,6 @@ main {
 }
 
 section {
-
   max-width: 1000px;
   margin: 30px auto;
   background: white;
@@ -58,6 +57,8 @@ section img {
 
 h2 {
   color: #388e3c;
+  font-size: 2em;
+  margin-bottom: 15px;
 }
 
 .stats {
@@ -76,18 +77,25 @@ h2 {
   min-width: 250px;
 }
 
+.stat h3 {
+  font-size: 2.5em;
+  color: #388e3c;
+}
+
 .impact-img {
   border-radius: 10px;
   margin-top: 20px;
 }
 
-#gaspi{
+#gaspi {
   height: 400px;
   width: 400px;
 }
 
 .tips {
   margin-top: 1em;
+  list-style-type: disc;
+  margin-left: 20px;
 }
 
 button {
@@ -109,6 +117,11 @@ footer {
   background-color: #e0e0e0;
   padding: 1rem;
   text-align: center;
+  font-size: 1em;
+}
+
+footer p {
+  margin: 0;
 }
 
 .answer-btn {
@@ -142,6 +155,56 @@ footer {
   opacity: 0.8;
   animation: fall 3s linear infinite;
 }
+
+/* Style des blocs de réponses dans le quiz */
+.quiz-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espace entre les réponses */
+  margin-top: 20px;
+}
+
+.quiz-answer {
+  background-color: #e8f5e9; /* Couleur de fond douce */
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  color: #388e3c;
+  cursor: pointer; /* Changement du curseur en main */
+  border: 2px solid #388e3c;
+  transition: transform 0.3s, background-color 0.3s ease-in-out; /* Transition pour l'effet hover */
+}
+
+.quiz-answer {
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin: 10px 0;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.quiz-answer:hover {
+  background-color: #d9f5d0;
+}
+
+.quiz-answer.correct {
+  background-color: #4caf50;
+  color: white;
+}
+
+.quiz-answer.incorrect {
+  background-color: #f44336;
+  color: white;
+}
+
+.quiz-answer:active {
+  transform: scale(0.98);
+}
+
+
 
 @keyframes fall {
   0% {

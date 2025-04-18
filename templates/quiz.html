@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin + Quiz</title>
+  <link rel="stylesheet" href="../static/style/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Stop au Gaspillage Alimentaire</h1>
+    <nav>
+      <a href="home.html">Accueil</a>
+      <a href="soluce.html">Solutions</a>
+      <a href="agir.html">Agir</a>
+      <a href="why.html">Quizz</a>
+    </nav>
+  </header>
+  <main>
+    <h1>🎛️ Panneau de Contrôle Quiz</h1>
+
+    <button onclick="startQuiz()" style="margin-bottom: 20px; font-size: 1.2em;">
+      🎯 Démarrer le Quiz
+    </button>
+
+    <p>Question en cours : <span id="current-question">Aucune</span></p>
+
+    <!-- Quiz Zone -->
+    <div id="quiz-block" style="margin-top: 40px;">
+      <h2>📱 Quiz Anti-Gaspi</h2>
+      <p id="wait-message">⏳ En attente du lancement du quiz...</p>
+
+      <div id="question-container">
+        <p id="question"></p>
+        <!-- Les réponses seront ici -->
+        <div id="answers" class="quiz-answers"></div>
+      </div>
+
+      <p id="final-score" style="display: none;"></p>
+    </div>
+  </main>
+
+  <script src="../static/script/data.js"></script>
+  <script src="../static/script/quiz.js"></script>
+  <script>
+    const currentQ = document.getElementById('current-question');
+    const answersContainer = document.getElementById('answers');
+
+    function updateAverageScore() {
+      const scores = JSON.parse(localStorage.getItem("scores") || "[]");
+      if (scores.length > 0) {
+        const sum = scores.reduce((acc, score) => acc + score, 0);
+        const average = sum / scores.length;
+        document.getElementById('average-score').textContent = average.toFixed(2);
+      }
+    }
+
+    setInterval(updateAverageScore, 1000);
+
+    function startQuiz() {
+      localStorage.setItem("quiz_started", "true");
+      localStorage.setItem("quiz_index", "0");
+      location.reload(); // Recharge pour déclencher le quiz
+    }
+
+    function listenToChanges(callback) {
+      const index = parseInt(localStorage.getItem("quiz_index") || "0");
+      if (index < questions.length) {
+        displayQuestion(index);
+      } else {
+        // Gérer la fin du quiz
+        document.getElementById('final-score').style.display = 'block';
+        document.getElementById('final-score').textContent = `Votre score final : ${score}`;
+      }
+    }
+
+    function displayQuestion(index) {
+      const question = questions[index];
+      document.getElementById('question').textContent = question.text;
+      answersContainer.innerHTML = ''; // Réinitialise les réponses
+
+      question.answers.forEach(answer => {
+        const answerBlock = document.createElement('div');
+        answerBlock.classList.add('quiz-answer');
+        answerBlock.textContent = answer.text;
+        
+        // On ajoute un gestionnaire d'événements pour la réponse
+        answerBlock.onclick = function() {
+          if (answer.correct) {
+            answerBlock.classList.add('correct');
+          } else {
+            answerBlock.classList.add('incorrect');
+          }
+        };
+        
+        answersContainer.appendChild(answerBlock);
+      });
+
+      // Met à jour l'indice de la question
+      localStorage.setItem("quiz_index", index + 1);
+    }
+
+    // Lancer l'écoute du quiz
+    document.addEventListener("DOMContentLoaded", () => {
+      const started = localStorage.getItem("quiz_started") === "true";
+      if (started) {
+        const index = parseInt(localStorage.getItem("quiz_index") || "0");
+        listenToChanges(displayQuestion);
+      }
+    });
+  </script>
+</body>
+</html>

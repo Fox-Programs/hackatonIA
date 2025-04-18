@@ -38,6 +38,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function showRandomTip() {
+    // Liste des astuces pour éviter le gaspillage alimentaire
+    const tips = [
+        "Réutilisez les restes pour créer de nouveaux repas, comme une soupe ou une salade.",
+        "Congelez les aliments qui commencent à se périmer, cela les gardera plus longtemps.",
+        "Rangez vos aliments de manière à utiliser d'abord ceux qui arrivent en fin de date de péremption.",
+        "Les épluchures de légumes peuvent souvent être utilisées pour faire des bouillons maison.",
+        "Planifiez vos repas pour éviter d'acheter plus d'aliments que vous ne pouvez consommer.",
+        "Faites attention à la taille des portions pour éviter de trop préparer et gaspiller.",
+        "Offrez vos excédents alimentaires à des associations locales ou des voisins."
+    ];
+
+    // Sélectionner une astuce aléatoire
+    const randomIndex = Math.floor(Math.random() * tips.length);
+    const randomTip = tips[randomIndex];
+
+    // Afficher l'astuce dans l'élément <p> avec l'ID "random-tip"
+    document.getElementById("random-tip").textContent = randomTip;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const questionText = document.getElementById('question-text');
     const answersContainer = document.getElementById('answers');
@@ -129,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
         showQuestion();
     }
 });
+
+
 
 
 
