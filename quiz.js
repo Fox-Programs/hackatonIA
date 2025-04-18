@@ -5,6 +5,7 @@ function startQuiz() {
     localStorage.setItem("quiz_started", "true");
     localStorage.setItem("quiz_index", "0");
     currentIndex = 0;
+    userAnswers = [];  // Réinitialise les réponses
 
     intervalId = setInterval(() => {
         currentIndex++;

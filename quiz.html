@@ -56,6 +56,7 @@
             <ul id="answers"></ul>
         </div>
         <p id="wait-message">⏳ En attente du lancement du quiz...</p>
+        <p id="final-score" style="display: none;"></p>
     </main>
 
     <script src="data.js"></script>
@@ -64,18 +65,22 @@
         const questionElem = document.getElementById("question");
         const answersElem = document.getElementById("answers");
         const waitMsg = document.getElementById("wait-message");
-    
+        const finalScoreElem = document.getElementById("final-score");
+        let currentIndex = 0;
+        let userAnswers = [];
+
+        // Affichage des questions et réponses
         function displayQuestion(index) {
             if (index === -1) {
                 showFinalScore();
                 return;
             }
-    
+
             const q = quiz[index];
             waitMsg.style.display = "none";
             questionElem.textContent = q.question;
             answersElem.innerHTML = "";
-    
+
             q.options.forEach((option, i) => {
                 const li = document.createElement("li");
                 li.textContent = option;
@@ -86,10 +91,39 @@
                 answersElem.appendChild(li);
             });
         }
-    
+
+        // Gestion de la réponse de l'utilisateur
+        function handleAnswer(selectedIndex) {
+            userAnswers[currentIndex] = selectedIndex; // Sauvegarde de la réponse
+            currentIndex++;
+            localStorage.setItem("quiz_index", currentIndex.toString());
+        }
+
+        // Affichage du score final à la fin du quiz
+        function showFinalScore() {
+            let score = 0;
+            quiz.forEach((q, i) => {
+                if (userAnswers[i] === q.answer) {
+                    score++;
+                }
+            });
+
+            finalScoreElem.style.display = "block";
+            finalScoreElem.textContent = `Votre score : ${score} / ${quiz.length}`;
+            localStorage.setItem("quiz_started", "false");
+            localStorage.setItem("quiz_index", "0");
+            saveScore(score);
+        }
+
+        // Sauvegarde du score dans localStorage
+        function saveScore(score) {
+            const scores = JSON.parse(localStorage.getItem("scores") || "[]");
+            scores.push(score);
+            localStorage.setItem("scores", JSON.stringify(scores));
+        }
+
         listenToChanges(displayQuestion);
     </script>
-    
 </body>
 
 </html>
