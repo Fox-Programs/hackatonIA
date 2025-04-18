@@ -37,30 +37,35 @@ function listenToChanges(displayQuestionCallback) {
 
 // Fonction pour afficher une question donnée par son index
 function displayQuestion(index) {
-    const questionElem = document.getElementById("question");
-    const answersElem = document.getElementById("answers");
-    const waitMsg = document.getElementById("wait-message");
+  const questionElem = document.getElementById("question");
+  const answersElem = document.getElementById("answers");
+  const waitMsg = document.getElementById("wait-message");
 
-    if (index === -1) {
-        showFinalScore();
-        return;
-    }
+  // Vérification si l'élément "wait-message" existe avant de manipuler son style
+  if (waitMsg) {
+      waitMsg.style.display = "none";  // Cache le message d'attente
+  }
 
-    const q = quiz[index];
-    waitMsg.style.display = "none";  // Cache le message d'attente
-    questionElem.textContent = q.question;
-    answersElem.innerHTML = "";
+  if (index === -1) {
+      showFinalScore();
+      return;
+  }
 
-    q.options.forEach((option, i) => {
-        const li = document.createElement("li");
-        li.textContent = option;
-        li.onclick = () => {
-            handleAnswer(i);
-            li.style.backgroundColor = "#ccc"; // Visuel réponse sélectionnée
-        };
-        answersElem.appendChild(li);
-    });
+  const q = quiz[index];
+  questionElem.textContent = q.question;
+  answersElem.innerHTML = "";
+
+  q.options.forEach((option, i) => {
+      const li = document.createElement("li");
+      li.textContent = option;
+      li.onclick = () => {
+          handleAnswer(i);
+          li.style.backgroundColor = "#ccc"; // Visuel réponse sélectionnée
+      };
+      answersElem.appendChild(li);
+  });
 }
+
 
 // Fonction pour gérer la réponse de l'utilisateur
 function handleAnswer(selectedIndex) {
