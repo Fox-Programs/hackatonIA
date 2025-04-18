@@ -1,17 +1,17 @@
 // ---------- QUIZ INTERACTIF AVEC BARRE DE PROGRESSION ET ANIMATION ----------
 const quiz = [
     {
-        question: "Quelle proportion de la nourriture produite dans le monde est gaspillée ?",
+        question: "A ton avis, quelle proportion de la nourriture produite dans le monde est gaspillée ?",
         options: ["1/10", "1/3", "1/2"],
         answer: 1
     },
     {
-        question: "Quel aliment est le plus gaspillé dans les foyers ?",
+        question: "Pour toi, quel aliment est le plus gaspillé dans les foyers ?",
         options: ["Le pain", "Le fromage", "La viande"],
         answer: 0
     },
     {
-        question: "Quelle est la différence entre DDM et DLC ?",
+        question: "Sais-tu , quelle est la différence entre DDM et DLC ?",
         options: [
             "Aucune, c’est la même chose",
             "DLC = limite sanitaire, DDM = limite de qualité",
@@ -25,7 +25,7 @@ const quiz = [
         answer: 1
     },
     {
-        question: "C'est quoi “Too Good To Go” ?",
+        question: "Sais-tu ce que c'est “Too Good To Go” ?",
         options: ["Une marque de surgelés", "Une application anti-gaspillage", "Un slogan publicitaire"],
         answer: 1
     },
@@ -35,7 +35,7 @@ const quiz = [
         answer: 2
     },
     {
-        question: "Pourquoi éviter de stocker les tomates au frigo ?",
+        question: "A ton avis, p0ourquoi éviter de stocker les tomates au frigo ?",
         options: ["Elles perdent du goût", "Elles moisissent plus vite", "C’est illégal en France"],
         answer: 0
     },
