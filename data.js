@@ -21,11 +21,11 @@ const quiz = [
     },
     {
         question: "Combien de kilos de nourriture jette un Français par an ?",
-        options: ["Environ 10 kg", "Environ 29 kg", "Environ 60 kg"],
+        options: ["Environ 10 kg", "Environ 30 kg", "Environ 60 kg"],
         answer: 1
     },
     {
-        question: "Que signifie “Too Good To Go” ?",
+        question: "C'est quoi “Too Good To Go” ?",
         options: ["Une marque de surgelés", "Une application anti-gaspillage", "Un slogan publicitaire"],
         answer: 1
     },
@@ -49,30 +49,6 @@ const quiz = [
         answer: 1
     },
     {
-        question: "Quel type de commerce donne souvent ses invendus à des associations ?",
-        options: ["Les stations-service", "Les supermarchés", "Les cinémas"],
-        answer: 1
-    },
-    {
-        question: "Les restes de légumes peuvent être réutilisés pour… ?",
-        options: ["Faire des chips", "Du compost", "Un bouillon maison"],
-        answer: 2
-    },
-    {
-        question: "Quel est l’impact principal du gaspillage alimentaire sur la planète ?",
-        options: [
-            "Il pollue les océans",
-            "Il génère des gaz à effet de serre",
-            "Il détruit la couche d’ozone"
-        ],
-        answer: 1
-    },
-    {
-        question: "Quel secteur gaspille le plus : agriculture, industrie, distribution, consommation ?",
-        options: ["Agriculture", "Consommation", "Industrie"],
-        answer: 1
-    },
-    {
         question: "En Europe, que dit la loi française de 2016 pour les supermarchés ?",
         options: [
             "Obligation de composter les invendus",
@@ -80,11 +56,6 @@ const quiz = [
             "Droit de garder les invendus pour les employés"
         ],
         answer: 1
-    },
-    {
-        question: "Quelle technique permet de prolonger la durée de vie des fruits ?",
-        options: ["L’emballage plastique", "Le stockage en silo", "La fermentation / confiture"],
-        answer: 2
     },
     {
         question: "Quel est le pourcentage des déchets alimentaires compostables ?",
