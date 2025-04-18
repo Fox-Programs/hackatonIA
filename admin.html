@@ -37,7 +37,6 @@
             }
         );
 
-
         // Suivi de la progression du quiz
         const currentQ = document.getElementById('current-question');
 
@@ -61,6 +60,12 @@
 
         // Appeler la fonction pour mettre à jour le score moyen
         setInterval(updateAverageScore, 1000);
+
+        // Fonction pour démarrer le quiz
+        function startQuiz() {
+            // Signale que le quiz a commencé en stockant une valeur dans localStorage
+            localStorage.setItem("quiz_started", "true");
+        }
     </script>
 </body>
 
