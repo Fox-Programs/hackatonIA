@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agir contre le gaspillage</title>
+  <link rel="stylesheet" href="../static/style/style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Stop au Gaspillage Alimentaire</h1>
+    <nav>
+      <a href="why.html">Pourquoi ?</a>
+      <a href="soluce.html">Solutions</a>
+      <a href="agir.html">Agir</a>
+      <a href="../quizz/admin.html">Quizz</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Bienvenue</h2>
+      <p>Chaque année, des millions de tonnes de nourriture sont jetées inutilement. Le gaspillage alimentaire est un
+        fléau évitable qui concerne chacun de nous.</p>
+      <img src="../static/img/gaspi.png" alt="Gaspillage alimentaire"
+        class="impact-img" id="gaspi"/>
+    </section>
+
+    <section>
+      <h2>Quelques chiffres clés</h2>
+      <div class="stats">
+        <div class="stat">
+          <h3>10 millions</h3>
+          <p>de tonnes de nourriture gaspillées chaque année en France</p>
+        </div>
+        <div class="stat">
+          <h3>1/3</h3>
+          <p>de la production alimentaire mondiale est jetée</p>
+        </div>
+        <div class="stat">
+          <h3>€1000</h3>
+          <p>de perte moyenne par foyer par an</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Impact environnemental</h2>
+      <p>Le gaspillage alimentaire contribue massivement aux émissions de gaz à effet de serre. Produire des aliments
+        inutilisés consomme de l’eau, de l’énergie, des terres agricoles et engendre des déchets inutiles.</p>
+      <img src="../static/img/diagramGaspi.jpeg"
+        alt="Infographie impact gaspillage" class="impact-img" id="diagramGaspi" />
+    </section>
+
+    <section>
+      <h2>Conseils rapides</h2>
+      <ul class="tips">
+        <li>Planifiez vos repas à l'avance</li>
+        <li>Comprenez les dates de péremption (DLC vs DDM)</li>
+        <li>Cuisinez les restes de manière créative</li>
+        <li>Stockez correctement vos aliments</li>
+        <li>Utilisez le congélateur pour éviter les pertes</li>
+      </ul>
+      <button onclick="showRandomTip()">Voir une astuce aléatoire</button>
+      <p id="random-tip" style="margin-top: 10px; font-weight: bold;"></p>
+    </section>
+  </main>
+</body>
+
+<footer>
+  <p>&copy; 2025 - 0 Gaspi</p>
+</footer>
+<script src="../static/script/script.js" defer></script>
+
+</html>

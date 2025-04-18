@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agir contre le gaspillage</title>
+    <link rel="stylesheet" href="../static/style/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Stop au Gaspillage Alimentaire</h1>
+        <nav>
+            <a href="home.html">Accueil</a>
+            <a href="why.html">Pourquoi ?</a>
+            <a href="soluce.html">Solutions</a>
+            <a href="../quizz/admin.html">Quizz</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Agir au quotidien</h2>
+            <p>Réduire le gaspillage alimentaire commence par des gestes simples. Mais vous pouvez aller plus loin en
+                rejoignant une communauté engagée, en soutenant des initiatives locales, ou en partageant vos idées !
+            </p>
+        </section>
+
+        <section>
+            <h2>Rejoindre des associations</h2>
+            <ul>
+                <li>🥫 <strong>Banques alimentaires</strong> : bénévolat, tri, distribution</li>
+                <li>🥕 <strong>Disco Soupe</strong> : événements festifs anti-gaspi</li>
+                <li>🥣 <strong>Restos du Cœur</strong>, <strong>Secours populaire</strong>, etc.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Initiatives locales</h2>
+            <p>Renseignez-vous sur ce qui existe autour de vous :</p>
+            <ul>
+                <li>🌱 Jardins partagés ou solidaires</li>
+                <li>🥗 Cafés associatifs ou cantines anti-gaspi</li>
+                <li>🧑‍🏫 Ateliers cuisine zéro déchet</li>
+                <li>📦 Boîtes à dons alimentaires</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Soutenir en ligne</h2>
+            <ul>
+                <li>📲 Télécharger et utiliser <strong>Too Good To Go</strong>, <strong>Phenix</strong>, <strong>Save
+                        Eat</strong></li>
+                <li>📢 Partager des contenus de sensibilisation sur les réseaux</li>
+                <li>📝 Signer des pétitions ou soutenir des projets participatifs (ex : plateformes de financement
+                    solidaire)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Proposer ou relayer des idées 💡</h2>
+            <p>Vous avez un projet, une astuce, une initiative locale à faire connaître ? Partagez-la !</p>
+            <form onsubmit="handleIdea(event)">
+                <label for="idea">Votre idée :</label><br />
+                <textarea id="idea" name="idea" rows="4" cols="50"
+                    placeholder="Exemple : Créer un frigo solidaire dans mon quartier..." required></textarea><br />
+                <button type="submit">Envoyer</button>
+            </form>
+            <p id="confirmation" style="margin-top: 10px; font-weight: bold;"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - 0 Gaspi</p>
+    </footer>
+
+    <script src="../static/script/script.js" defer></script>
+</body>
+
+</html>

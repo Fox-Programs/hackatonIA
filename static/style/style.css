@@ -1,0 +1,153 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  color: #333;
+}
+
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  scale: 1.1;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+section {
+
+  max-width: 1000px;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+section img {
+  display: block;
+  margin: 20px auto;
+}
+
+h2 {
+  color: #388e3c;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.stat {
+  flex: 1;
+  background-color: #e8f5e9;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 250px;
+}
+
+.impact-img {
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#gaspi{
+  height: 400px;
+  width: 400px;
+}
+
+.tips {
+  margin-top: 1em;
+}
+
+button {
+  background-color: green;
+  color: white;
+  border: solid black 2px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: darkgreen;
+  scale: 1.1;
+}
+
+footer {
+  background-color: #e0e0e0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.answer-btn {
+  padding: 10px;
+  background-color: green;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.answer-btn:hover {
+  background-color: darkgreen;
+  scale: 1.1;
+}
+
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}

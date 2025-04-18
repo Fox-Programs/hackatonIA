@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Quiz Anti-Gaspi</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f5;
+            padding: 2em;
+            text-align: center;
+        }
+
+        #question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        #answers {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #answers li {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: transform 0.2s;
+        }
+
+        #answers li:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        #wait-message {
+            color: #777;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2>📱 Quiz Anti-Gaspi</h2>
+        <div id="question-container">
+            <p id="question"></p>
+            <ul id="answers"></ul>
+        </div>
+        <p id="wait-message">⏳ En attente du lancement du quiz...</p>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="quiz.js"></script>
+    <script>
+        const questionElem = document.getElementById("question");
+        const answersElem = document.getElementById("answers");
+        const waitMsg = document.getElementById("wait-message");
+
+        function displayQuestion(index) {
+            if (index === -1) {
+                questionElem.textContent = "🎉 Merci d’avoir participé au quiz !";
+                answersElem.innerHTML = "";
+                waitMsg.style.display = "none";
+                return;
+            }
+
+            const q = quiz[index];
+            waitMsg.style.display = "none";
+            questionElem.textContent = q.question;
+            answersElem.innerHTML = "";
+
+            q.options.forEach(option => {
+                const li = document.createElement("li");
+                li.textContent = option;
+                answersElem.appendChild(li);
+            });
+        }
+
+        listenToChanges(displayQuestion);
+    </script>
+</body>
+
+</html>
