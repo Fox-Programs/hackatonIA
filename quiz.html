@@ -64,32 +64,32 @@
         const questionElem = document.getElementById("question");
         const answersElem = document.getElementById("answers");
         const waitMsg = document.getElementById("wait-message");
-
+    
         function displayQuestion(index) {
             if (index === -1) {
-                questionElem.textContent = "🎉 Merci d’avoir participé au quiz !";
-                answersElem.innerHTML = "";
-                waitMsg.style.display = "none";
+                showFinalScore();
                 return;
             }
-
+    
             const q = quiz[index];
             waitMsg.style.display = "none";
             questionElem.textContent = q.question;
             answersElem.innerHTML = "";
-
+    
             q.options.forEach((option, i) => {
                 const li = document.createElement("li");
                 li.textContent = option;
-                li.onclick = function () {
-                    saveAnswer(index, i);
+                li.onclick = () => {
+                    handleAnswer(i);
+                    li.style.backgroundColor = "#ccc"; // Visuel réponse sélectionnée
                 };
                 answersElem.appendChild(li);
             });
         }
-
+    
         listenToChanges(displayQuestion);
     </script>
+    
 </body>
 
 </html>

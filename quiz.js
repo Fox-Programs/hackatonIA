@@ -1,26 +1,23 @@
 let currentIndex = 0;
 let intervalId = null;
+let score = 0;
+let hasAnswered = false;
 
 function startQuiz() {
   localStorage.setItem("quiz_started", "true");
   localStorage.setItem("quiz_index", "0");
   currentIndex = 0;
 
-  // Initialisation du score pour chaque participant
-  localStorage.setItem("score", "0");
-
   intervalId = setInterval(() => {
     currentIndex++;
+    hasAnswered = false;
+
     if (currentIndex >= quiz.length) {
       clearInterval(intervalId);
-      // Enregistrer le score à la fin du quiz
-      const score = localStorage.getItem("score");
-      const scores = JSON.parse(localStorage.getItem("scores") || "[]");
-      scores.push(parseInt(score));
-      localStorage.setItem("scores", JSON.stringify(scores));
     }
+
     localStorage.setItem("quiz_index", currentIndex.toString());
-  }, 10000); // Change toutes les 10 secondes
+  }, 10000); // Changement toutes les 10 secondes
 }
 
 function listenToChanges(displayQuestionCallback) {
@@ -32,9 +29,6 @@ function listenToChanges(displayQuestionCallback) {
       displayQuestionCallback(index);
     } else if (started && index >= quiz.length) {
       displayQuestionCallback(-1); // fin du quiz
-      // Sauvegarder le score final
-      const finalScore = calculateScore();
-      localStorage.setItem("score", finalScore.toString());
     }
   }
 
@@ -42,19 +36,28 @@ function listenToChanges(displayQuestionCallback) {
   setInterval(updateFromStorage, 1000);
 }
 
-// Fonction pour calculer le score
-function calculateScore() {
-  let score = 0;
-  for (let i = 0; i < quiz.length; i++) {
-    const userAnswer = localStorage.getItem("answer_" + i);
-    if (parseInt(userAnswer) === quiz[i].answer) {
-      score++;
-    }
+function handleAnswer(index) {
+  if (hasAnswered) return; // Une seule réponse autorisée
+
+  const currentQ = quiz[currentIndex];
+  if (index === currentQ.answer) {
+    score++;
   }
-  return score;
+
+  hasAnswered = true;
 }
 
-// Enregistrer la réponse de l'utilisateur
-function saveAnswer(questionIndex, answerIndex) {
-  localStorage.setItem("answer_" + questionIndex, answerIndex);
+function showFinalScore() {
+  const questionElem = document.getElementById("question");
+  const answersElem = document.getElementById("answers");
+  const waitMsg = document.getElementById("wait-message");
+
+  questionElem.textContent = `🎉 Quiz terminé !`;
+  answersElem.innerHTML = `🧠 Ton score : <strong>${score} / ${quiz.length}</strong>`;
+  waitMsg.style.display = "none";
+
+  // Enregistrer score dans localStorage
+  const allScores = JSON.parse(localStorage.getItem("scores") || "[]");
+  allScores.push(score);
+  localStorage.setItem("scores", JSON.stringify(allScores));
 }
